@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <ctype.h>
+#include <time.h>
+
+int main() {
+  int i, inner, outer, didSwap, temp;
+  int nums[10];
+  time_t t;
+
+  srand(time(&t));
+
+    for (i = 0; i < 10; ++i) {
+        nums[i] = (rand() % 99) + 1;
+        printf("\t%d\n", nums[i]);
+    }
+
+    for (outer = 0; outer < 9; ++outer) {
+        didSwap = 0;
+        for (inner = outer; inner < 10; ++inner) {
+            if (nums[inner] > nums[outer])
+            {
+                temp = nums[inner];
+                nums[inner] = nums[outer];
+                nums[outer] = temp;
+                didSwap = 1;
+            }
+        }
+        if (didSwap == 0)
+        {
+            break;
+        }
+    }
+    for (i = 0; i < 10; ++i) {
+        printf("\n%d", nums[i]);
+    }
+}
