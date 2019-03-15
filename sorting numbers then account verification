@@ -1,0 +1,62 @@
+#include <stdio.h>
+      #include <conio.h>
+      #include <ctype.h>
+      #include <string.h>
+      #include <stdlib.h>
+      #include <time.h>
+
+    int main() {
+        int inner, outer, i, didSwap, tempid, idSearch, found = 0;
+        int nums[5];
+        int id[5] = {313, 666,123, 456, 852};
+        float bal[5] = {87.99, 123.00, 99.99, 65.99, 900.00}, tempbal;
+
+        srand(time(0));
+
+        for (outer = 0; outer < 4; ++outer) {
+            didSwap = 0;
+            for (inner = outer; inner < 5; ++inner) {
+                if (id[inner] < id[outer])
+                {
+                    tempid = id[inner];
+                    tempbal = bal[inner];
+                    id[inner] = id[outer];
+                    bal[inner] = bal[outer];
+                    id[outer] = tempid;
+                    bal[outer] = tempbal;
+                    didSwap = 1;
+                }
+            }
+            if (didSwap == 0)
+            {
+                break;
+            }
+        }
+
+        printf("what is your acount number?");
+        scanf(" %d", &idSearch);
+
+        for (i = 0; i < 5; ++i) {
+            if (idSearch == id[i])
+            {
+                found = 1;
+                break;
+            }
+        }
+
+        if (found)
+        {
+            if (bal[i] > 100.00)
+            {
+                printf("your account does not have enought funds to pay for what you are getting");
+            }
+            else
+            {
+                printf("you can buy anything in your price range");
+            }
+        }
+        else
+        {
+            printf("your account number does not match any of our acount numbers");
+        }
+}
